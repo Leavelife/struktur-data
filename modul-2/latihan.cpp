@@ -1,151 +1,47 @@
 #include <iostream>
-#include <conio.h>
+#include <iomanip>
 using namespace std;
 
-int data1[10], data2[10]; 
-int n;
-
-void inputData() {
-    cout << endl << "Masukkan jumlah data: "; cin >> n;
-    for (int i = 0; i < n; i++) {
-        cout << "Masukkan data ke " << (i + 1) << " : ";
-        cin >> data1[i];
-        data2[i] = data1[i];
-    }
-}
-void bubbleSort() {
-    for (int i = 1; i < n; i++) {
-        cout << endl << "Tahap " << i << endl;
-        for (int j = n - 1; j >= i; j--) {
-            if (data1[j] < data1[j - 1]) {
-                int t; 
-                t = data1[j - 1];
-                data1[j - 1] = data1[j];
-                data1[j] = t;
-                cout << "Tukar angka " << data1[j] << " dan " << data1[j-1]<< endl;
+void selectionSort(int array[], const int size) {
+    int i, j, small,temp;
+    for (i = 0; i < size; i++) {
+        cout << "tahap ke " << i + 1<< endl;
+        small = i;
+        for (j = 0; j < size; j++) {
+            if (array[j] > array[small]) {
+                cout << "angka " << array[small] << " ditukar " << array[j] << endl;
+                small = j;
+                temp = array[i];
+                array[i] = array[small];
+                array[small] = temp;
             } else {
-                cout << data1[j-1] << " tidak ditukar " << data1[j]<< endl;
+                cout << "angka " << array[small] << " tidak ditukar " << array[j] << endl;
             }
-            for (int a = 0; a < n; a++) {
-                cout << data1[a] << ", ";
-            } 
+            for (int i = 0; i < size; i++) {
+                cout << array[i] << setw(3);
+            }
             cout << endl;
         }
-    }
-}
-void exchangeSort() {
-    for (int i = 0; i < n - 1; i++) {
-        cout << endl << "Tahap " << i + 1 << endl;
-        for (int j = i + 1; j < n; j++) {
-            if (data1[i] > data1[j]) {
-                int t; 
-                t = data1[j];
-                data1[j] = data1[i];
-                data1[i] = t;
-                cout << "Tukar angka " << data1[i] << " dan " << data1[j]<< endl;
-            } else {
-                cout << data1[j] << " tidak ditukar " << data1[i]<< endl;
-            }
-            for (int a = 0; a < n; a++) {
-                cout << data1[a] << ", ";
-            } 
-            cout << endl;
+        for (int i = 0; i < size; i++) {
+            cout << array[i] << setw(3);
         }
-    }
-}
-void selectionSort() {
-    int pos;
-    for (int i = 0; i < n - 1; i++) {
-        cout << endl << "Tahap " << i + 1 << endl;
-        pos = i;
-        for(int j = i + 1; j < n; j++) {
-            if(data1[j] < data1[pos]) {
-                cout << "pos: " << data1[pos] << " dengan " << data1[j] << endl;
-                pos = j;
-                cout << "menjadi pos: " << data1[pos] << " dengan " << data1[j] << endl;
-            } else {
-                cout << "pos: " << data1[pos] << " dengan " << data1[j] << endl;
-            }
-            for (int a = 0; a < n; a++) {
-                cout << data1[a] << ", ";
-            } 
-            cout << endl;
-        }
-        if(pos != i) {
-            int t; 
-            t = data1[i];
-            data1[i] = data1[pos];
-            data1[pos] = t;
-            cout << "Tukar angka " << data1[pos] << " dan " << data1[i]<< endl;
-        } else {
-            cout << data1[i] << " tidak ditukar " << data1[pos]<< endl;
-        }
-        for (int a = 0; a < n; a++) {
-            cout << data1[a] << ", ";
-        } 
         cout << endl;
     }
-}
-void insertionSort() {
-    int temp;
-    for (int i = 1; i < n; i++) {
-        cout << endl << "Tahap " << i << endl;
-        temp = data1[i];
-        int j = i - 1;
-        while (data1[j] < temp && j >= 0) {
-            data1[j + 1] = data1[j];
-            j--;
-        }
-        data1[j + 1] = temp;
-        for (int a = 0; a < n; a++) {
-            cout << data1[a] << ", ";
-        } 
-        cout << endl;
-    }
-}
-void displayData() {
-    cout << "data: ";
-    for (int i = 0; i < n; i++) {
-        cout << data1[i];
-    }
-    cout << endl;
 }
 
 int main() {
-    int pilihan;
-    do {
-        cout << endl << "1. Input Data" << endl;
-        cout << "2. Bubble Sort" << endl;
-        cout << "3. Exchange Sort" << endl;
-        cout << "4. Selection Sort" << endl;
-        cout << "5. Insertion Sort" << endl;
-        cout << "6. Tampilkan Data" << endl;
-        cout << "7. Exit" << endl;
-        cout << "Pilihan: "; cin >> pilihan;
+    int data[10] = {6, 1, 8, 2, 3, 9, 0, 7, 5, 4};
 
-        switch (pilihan) {
-            case 1:
-                inputData();
-                break;
-            case 2:
-                bubbleSort();
-                break;
-            case 3:
-                exchangeSort();
-                break;
-            case 4:
-                selectionSort();
-                break;
-            case 5:
-                insertionSort();
-                break;
-            case 6:
-                displayData();
-                break;
-            default:
-                break;
-        }
-        getch();
-    } while (pilihan != 7);
-    cout << "anda keluar program" << endl;
+    cout << "data sebelum diurutkan: " << endl;
+    for (int i = 0; i < 10; i++) {
+        cout << data[i] << setw(3);
+    }
+    cout << endl << endl;
+    selectionSort(data, 10);
+
+    cout << "data setelah diurutkan: " << endl;
+    for (int i = 0; i < 10; i++) {
+        cout << data[i] << setw(3);
+    }
+    cout << endl;
 }
