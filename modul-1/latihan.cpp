@@ -5,14 +5,15 @@
 #include <vector>
 
 using namespace std;
+#define length 5
 
 struct Mahasiswa {
-    int nim[5], nilai[5];
-    string namaMhs[5];
+    int nim[length], nilai[length];
+    string namaMhs[length];
 };
 void showData(Mahasiswa mhs) {
     cout << "Menampilkan data mahasiswa..." << endl;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < length; i++) {
         cout << "Nim:\t" << mhs.nim[i] << endl;
         cout << "Nama:\t" << mhs.namaMhs[i] << endl;
         cout << "Nil:\t" << mhs.nilai[i] << endl << endl;
@@ -44,11 +45,14 @@ void sorting(Mahasiswa &mhs, int indexAwal, int indexAkhir) {
 int main() {
     int pilihan;
     Mahasiswa mhs;
+
+    //data mahasiswa
     mhs.nim[0] = 24001; mhs.namaMhs[0] = "galih"; mhs.nilai[0] = 90;
     mhs.nim[1] = 24002; mhs.namaMhs[1] = "ibnu";mhs.nilai[1] = 89;
     mhs.nim[2] = 24003; mhs.namaMhs[2] = "cantika"; mhs.nilai[2] = 95;
     mhs.nim[3] = 24004; mhs.namaMhs[3] = "agus"; mhs.nilai[3] = 70;
     mhs.nim[4] = 24005; mhs.namaMhs[4] = "tino"; mhs.nilai[4] = 80;
+
     do {
         system("cls");
         cout << "1. tampilkan data" << endl;
