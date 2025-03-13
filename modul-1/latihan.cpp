@@ -39,6 +39,5 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << mhs[i].NIM << " - " << mhs[i].NamaMhs << " - " << mhs[i].Nilai << endl;
     }
-
     return 0;
 }
