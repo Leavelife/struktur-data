@@ -1,9 +1,8 @@
 #include <iostream>
 #include <conio.h>
-#include <limits> // untuk std::numeric_limits
+#include <limits>
 using namespace std;
 
-// Kelas Node untuk Doubly Linked List
 class Node {
 public:
     int data;
@@ -18,15 +17,14 @@ public:
     }
 };
 
-// Kelas DoublyLinkedList
-class DoublyLinkedList {
+class LinkedList {
 private:
     Node* head;  // Pointer ke node terdepan
     Node* tail;  // Pointer ke node terbelakang
 
 public:
     // Konstruktor: inisialisasi head & tail = nullptr
-    DoublyLinkedList() {
+    LinkedList() {
         head = nullptr;
         tail = nullptr;
     }
@@ -232,7 +230,7 @@ public:
 
 // Fungsi utama dengan menu
 int main() {
-    DoublyLinkedList list;
+    LinkedList list;
     int pilihan;
     int value, key;
     Node* foundNode;
@@ -259,7 +257,7 @@ int main() {
 
         switch (pilihan) {
             case 1:
-                cout << "Masukkan 1 data: ";
+                cout << "Masukkan sebuah data (angka): ";
                 cin >> value;
                 list.insertAtEnd(value);
                 getch();
